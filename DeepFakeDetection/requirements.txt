@@ -1,0 +1,4 @@
+fastapi
+deepface
+mediapipe
+openai
