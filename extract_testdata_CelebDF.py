@@ -2,18 +2,22 @@ import os
 import cv2
 
 def take_screenshot_from_video(video_path, screenshot_path):
+    # open the video using OpenCV
     video_capture = cv2.VideoCapture(video_path)
+
+    # set the video frame position to the first second
+    video_capture.set(cv2.CAP_PROP_POS_FRAMES, 0)  
     
-    fps = video_capture.get(cv2.CAP_PROP_FPS)
-    video_capture.set(cv2.CAP_PROP_POS_FRAMES, fps)  
-    
+    # read the frame from the video at the set position
     success, frame = video_capture.read()
     
     if success:
+        # save extracted frame as an image file
         cv2.imwrite(screenshot_path, frame)
     else:
-        print(f"error while reading video: {video_path}")
+        print(f"Error while reading video: {video_path}")
     
+    # release video resource to free memory
     video_capture.release()
 
 def process_videos(real_folder, synthetic_folder, output_folder):
@@ -23,11 +27,11 @@ def process_videos(real_folder, synthetic_folder, output_folder):
             real_id, real_variant = real_name.split('_')  # Example: 'id0', '0000'
             real_video_path = os.path.join(real_folder, real_file)
             
-            # create main folder for this person (z.B. 'id0')
+            # create main folder for this person (e.g. 'id0')
             person_folder = os.path.join(output_folder, real_id)
             os.makedirs(person_folder, exist_ok=True)
             
-            # create subfolder for each variant of this person (z.B. '0000', '0001')
+            # create subfolder for each variant of this person (e.g. '0000', '0001')
             variant_folder = os.path.join(person_folder, real_variant)
             os.makedirs(variant_folder, exist_ok=True)
             

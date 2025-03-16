@@ -1,4 +1,5 @@
-﻿using Amazon.Rekognition;
+﻿using Amazon;
+using Amazon.Rekognition;
 using Amazon.Rekognition.Model;
 using Newtonsoft.Json.Linq;
 using Org.OpenAPITools.Api;
@@ -11,7 +12,7 @@ class Program
         AWS, OPEN_CV, DEEP_FAKE_TEST, MODEL_VALIDATION
     }
 
-    private static readonly AmazonRekognitionClient rekognitionClient = new();
+    private static readonly AmazonRekognitionClient rekognitionClient = new AmazonRekognitionClient("access-key", "secret-key", RegionEndpoint.EUCentral1);
     private static readonly double THRESHOLD_OPEN_CV = 0.7;
     private static readonly double THRESHOLD_AWS = 80;
 
