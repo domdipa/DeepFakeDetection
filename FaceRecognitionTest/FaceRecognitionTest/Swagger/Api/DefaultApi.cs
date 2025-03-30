@@ -76,12 +76,12 @@ namespace Org.OpenAPITools.Api
         /// Verify By Lmm
         /// </summary>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="faceDetectionInput"></param>
+        /// <param name="faceDetectionModel"></param>
         /// <param name="file1"></param>
         /// <param name="file2"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>LLMResultModel</returns>
-        LLMResultModel VerifyByLmmCheckByLLMPost(string faceDetectionInput, System.IO.Stream file1, System.IO.Stream file2, int operationIndex = 0);
+        LLMResultModel VerifyByLmmCheckByLLMPost(string faceDetectionModel, System.IO.Stream file1, System.IO.Stream file2, int operationIndex = 0);
 
         /// <summary>
         /// Verify By Lmm
@@ -90,12 +90,12 @@ namespace Org.OpenAPITools.Api
         /// 
         /// </remarks>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="faceDetectionInput"></param>
+        /// <param name="faceDetectionModel"></param>
         /// <param name="file1"></param>
         /// <param name="file2"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of LLMResultModel</returns>
-        ApiResponse<LLMResultModel> VerifyByLmmCheckByLLMPostWithHttpInfo(string faceDetectionInput, System.IO.Stream file1, System.IO.Stream file2, int operationIndex = 0);
+        ApiResponse<LLMResultModel> VerifyByLmmCheckByLLMPostWithHttpInfo(string faceDetectionModel, System.IO.Stream file1, System.IO.Stream file2, int operationIndex = 0);
         #endregion Synchronous Operations
     }
 
@@ -168,13 +168,13 @@ namespace Org.OpenAPITools.Api
         /// 
         /// </remarks>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="faceDetectionInput"></param>
+        /// <param name="faceDetectionModel"></param>
         /// <param name="file1"></param>
         /// <param name="file2"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of LLMResultModel</returns>
-        System.Threading.Tasks.Task<LLMResultModel> VerifyByLmmCheckByLLMPostAsync(string faceDetectionInput, System.IO.Stream file1, System.IO.Stream file2, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<LLMResultModel> VerifyByLmmCheckByLLMPostAsync(string faceDetectionModel, System.IO.Stream file1, System.IO.Stream file2, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
 
         /// <summary>
         /// Verify By Lmm
@@ -183,13 +183,13 @@ namespace Org.OpenAPITools.Api
         /// 
         /// </remarks>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="faceDetectionInput"></param>
+        /// <param name="faceDetectionModel"></param>
         /// <param name="file1"></param>
         /// <param name="file2"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (LLMResultModel)</returns>
-        System.Threading.Tasks.Task<ApiResponse<LLMResultModel>> VerifyByLmmCheckByLLMPostWithHttpInfoAsync(string faceDetectionInput, System.IO.Stream file1, System.IO.Stream file2, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<LLMResultModel>> VerifyByLmmCheckByLLMPostWithHttpInfoAsync(string faceDetectionModel, System.IO.Stream file1, System.IO.Stream file2, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -358,6 +358,7 @@ namespace Org.OpenAPITools.Api
             };
 
             var localVarContentType = Org.OpenAPITools.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -524,6 +525,7 @@ namespace Org.OpenAPITools.Api
             };
 
             var localVarContentType = Org.OpenAPITools.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -648,14 +650,14 @@ namespace Org.OpenAPITools.Api
         /// Verify By Lmm 
         /// </summary>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="faceDetectionInput"></param>
+        /// <param name="faceDetectionModel"></param>
         /// <param name="file1"></param>
         /// <param name="file2"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>LLMResultModel</returns>
-        public LLMResultModel VerifyByLmmCheckByLLMPost(string faceDetectionInput, System.IO.Stream file1, System.IO.Stream file2, int operationIndex = 0)
+        public LLMResultModel VerifyByLmmCheckByLLMPost(string faceDetectionModel, System.IO.Stream file1, System.IO.Stream file2, int operationIndex = 0)
         {
-            Org.OpenAPITools.Client.ApiResponse<LLMResultModel> localVarResponse = VerifyByLmmCheckByLLMPostWithHttpInfo(faceDetectionInput, file1, file2);
+            Org.OpenAPITools.Client.ApiResponse<LLMResultModel> localVarResponse = VerifyByLmmCheckByLLMPostWithHttpInfo(faceDetectionModel, file1, file2);
             return localVarResponse.Data;
         }
 
@@ -663,17 +665,17 @@ namespace Org.OpenAPITools.Api
         /// Verify By Lmm 
         /// </summary>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="faceDetectionInput"></param>
+        /// <param name="faceDetectionModel"></param>
         /// <param name="file1"></param>
         /// <param name="file2"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of LLMResultModel</returns>
-        public Org.OpenAPITools.Client.ApiResponse<LLMResultModel> VerifyByLmmCheckByLLMPostWithHttpInfo(string faceDetectionInput, System.IO.Stream file1, System.IO.Stream file2, int operationIndex = 0)
+        public Org.OpenAPITools.Client.ApiResponse<LLMResultModel> VerifyByLmmCheckByLLMPostWithHttpInfo(string faceDetectionModel, System.IO.Stream file1, System.IO.Stream file2, int operationIndex = 0)
         {
-            // verify the required parameter 'faceDetectionInput' is set
-            if (faceDetectionInput == null)
+            // verify the required parameter 'faceDetectionModel' is set
+            if (faceDetectionModel == null)
             {
-                throw new Org.OpenAPITools.Client.ApiException(400, "Missing required parameter 'faceDetectionInput' when calling DefaultApi->VerifyByLmmCheckByLLMPost");
+                throw new Org.OpenAPITools.Client.ApiException(400, "Missing required parameter 'faceDetectionModel' when calling DefaultApi->VerifyByLmmCheckByLLMPost");
             }
 
             // verify the required parameter 'file1' is set
@@ -700,6 +702,7 @@ namespace Org.OpenAPITools.Api
             };
 
             var localVarContentType = Org.OpenAPITools.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -711,7 +714,7 @@ namespace Org.OpenAPITools.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
-            localVarRequestOptions.QueryParameters.Add(Org.OpenAPITools.Client.ClientUtils.ParameterToMultiMap("", "faceDetectionInput", faceDetectionInput));
+            localVarRequestOptions.FormParameters.Add("faceDetectionModel", Org.OpenAPITools.Client.ClientUtils.ParameterToString(faceDetectionModel)); // form parameter
             localVarRequestOptions.FileParameters.Add("file1", file1);
             localVarRequestOptions.FileParameters.Add("file2", file2);
 
@@ -737,15 +740,15 @@ namespace Org.OpenAPITools.Api
         /// Verify By Lmm 
         /// </summary>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="faceDetectionInput"></param>
+        /// <param name="faceDetectionModel"></param>
         /// <param name="file1"></param>
         /// <param name="file2"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of LLMResultModel</returns>
-        public async System.Threading.Tasks.Task<LLMResultModel> VerifyByLmmCheckByLLMPostAsync(string faceDetectionInput, System.IO.Stream file1, System.IO.Stream file2, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<LLMResultModel> VerifyByLmmCheckByLLMPostAsync(string faceDetectionModel, System.IO.Stream file1, System.IO.Stream file2, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
         {
-            Org.OpenAPITools.Client.ApiResponse<LLMResultModel> localVarResponse = await VerifyByLmmCheckByLLMPostWithHttpInfoAsync(faceDetectionInput, file1, file2, operationIndex, cancellationToken).ConfigureAwait(false);
+            Org.OpenAPITools.Client.ApiResponse<LLMResultModel> localVarResponse = await VerifyByLmmCheckByLLMPostWithHttpInfoAsync(faceDetectionModel, file1, file2, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -753,18 +756,18 @@ namespace Org.OpenAPITools.Api
         /// Verify By Lmm 
         /// </summary>
         /// <exception cref="Org.OpenAPITools.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="faceDetectionInput"></param>
+        /// <param name="faceDetectionModel"></param>
         /// <param name="file1"></param>
         /// <param name="file2"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (LLMResultModel)</returns>
-        public async System.Threading.Tasks.Task<Org.OpenAPITools.Client.ApiResponse<LLMResultModel>> VerifyByLmmCheckByLLMPostWithHttpInfoAsync(string faceDetectionInput, System.IO.Stream file1, System.IO.Stream file2, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Org.OpenAPITools.Client.ApiResponse<LLMResultModel>> VerifyByLmmCheckByLLMPostWithHttpInfoAsync(string faceDetectionModel, System.IO.Stream file1, System.IO.Stream file2, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
         {
-            // verify the required parameter 'faceDetectionInput' is set
-            if (faceDetectionInput == null)
+            // verify the required parameter 'faceDetectionModel' is set
+            if (faceDetectionModel == null)
             {
-                throw new Org.OpenAPITools.Client.ApiException(400, "Missing required parameter 'faceDetectionInput' when calling DefaultApi->VerifyByLmmCheckByLLMPost");
+                throw new Org.OpenAPITools.Client.ApiException(400, "Missing required parameter 'faceDetectionModel' when calling DefaultApi->VerifyByLmmCheckByLLMPost");
             }
 
             // verify the required parameter 'file1' is set
@@ -803,7 +806,7 @@ namespace Org.OpenAPITools.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
-            localVarRequestOptions.QueryParameters.Add(Org.OpenAPITools.Client.ClientUtils.ParameterToMultiMap("", "faceDetectionInput", faceDetectionInput));
+            localVarRequestOptions.FormParameters.Add("faceDetectionModel", Org.OpenAPITools.Client.ClientUtils.ParameterToString(faceDetectionModel)); // form parameter
             localVarRequestOptions.FileParameters.Add("file1", file1);
             localVarRequestOptions.FileParameters.Add("file2", file2);
 

@@ -40,12 +40,14 @@ namespace Org.OpenAPITools.Model
         /// Initializes a new instance of the <see cref="LLMResultModel" /> class.
         /// </summary>
         /// <param name="verified">verified (required).</param>
+        /// <param name="similarity">similarity (required).</param>
         /// <param name="confidenceScore">confidenceScore (required).</param>
         /// <param name="explanation">explanation (required).</param>
         /// <param name="testValid">testValid (required).</param>
-        public LLMResultModel(bool verified = default(bool), decimal confidenceScore = default(decimal), string explanation = default(string), bool testValid = default(bool))
+        public LLMResultModel(bool verified = default(bool), decimal similarity = default(decimal), decimal confidenceScore = default(decimal), string explanation = default(string), bool testValid = default(bool))
         {
             this.Verified = verified;
+            this.Similarity = similarity;
             this.ConfidenceScore = confidenceScore;
             // to ensure "explanation" is required (not null)
             if (explanation == null)
@@ -61,6 +63,12 @@ namespace Org.OpenAPITools.Model
         /// </summary>
         [DataMember(Name = "verified", IsRequired = true, EmitDefaultValue = true)]
         public bool Verified { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Similarity
+        /// </summary>
+        [DataMember(Name = "similarity", IsRequired = true, EmitDefaultValue = true)]
+        public decimal Similarity { get; set; }
 
         /// <summary>
         /// Gets or Sets ConfidenceScore
@@ -89,6 +97,7 @@ namespace Org.OpenAPITools.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class LLMResultModel {\n");
             sb.Append("  Verified: ").Append(Verified).Append("\n");
+            sb.Append("  Similarity: ").Append(Similarity).Append("\n");
             sb.Append("  ConfidenceScore: ").Append(ConfidenceScore).Append("\n");
             sb.Append("  Explanation: ").Append(Explanation).Append("\n");
             sb.Append("  TestValid: ").Append(TestValid).Append("\n");

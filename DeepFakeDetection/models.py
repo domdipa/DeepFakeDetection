@@ -7,15 +7,38 @@ class LandmarkPoint(BaseModel):
 
 class FaceLandmarks(BaseModel):
     image_shape: str
-    left_eye: list[LandmarkPoint]
-    right_eye: list[LandmarkPoint]
-    mouth: list[LandmarkPoint]
-    left_iris: list[LandmarkPoint]
-    right_iris: list[LandmarkPoint]
-    nose_tip: list[LandmarkPoint]
-    chin: list[LandmarkPoint]
-    left_cheek: list[LandmarkPoint]
-    right_cheek: list[LandmarkPoint]
+    silhouette: list[LandmarkPoint]
+    lipsUpperOuter: list[LandmarkPoint]
+    lipsLowerOuter: list[LandmarkPoint]
+    lipsUpperInner: list[LandmarkPoint]
+    lipsLowerInner: list[LandmarkPoint]
+    rightEyeUpper0: list[LandmarkPoint]
+    rightEyeLower0: list[LandmarkPoint]
+    rightEyeUpper1: list[LandmarkPoint]
+    rightEyeLower1: list[LandmarkPoint]
+    rightEyeUpper2: list[LandmarkPoint]
+    rightEyeLower2: list[LandmarkPoint]
+    rightEyeLower3: list[LandmarkPoint]
+    rightEyebrowUpper: list[LandmarkPoint]
+    rightEyebrowLower: list[LandmarkPoint]
+    rightEyeIris: list[LandmarkPoint]
+    leftEyeUpper0: list[LandmarkPoint]
+    leftEyeLower0: list[LandmarkPoint]
+    leftEyeUpper1: list[LandmarkPoint]
+    leftEyeLower1: list[LandmarkPoint]
+    leftEyeUpper2: list[LandmarkPoint]
+    leftEyeLower2: list[LandmarkPoint]
+    leftEyeLower3: list[LandmarkPoint]
+    leftEyebrowUpper: list[LandmarkPoint]
+    leftEyebrowLower: list[LandmarkPoint]
+    leftEyeIris: list[LandmarkPoint]
+    midwayBetweenEyes: list[LandmarkPoint]
+    noseTip: list[LandmarkPoint]
+    noseBottom: list[LandmarkPoint]
+    noseRightCorner: list[LandmarkPoint]
+    noseLeftCorner: list[LandmarkPoint]
+    rightCheek: list[LandmarkPoint]
+    leftCheek: list[LandmarkPoint]
     
     @classmethod
     def from_dict(cls, data):
@@ -39,6 +62,7 @@ class FaceDetectionModel(BaseModel):
     
 class LLMResultModel(BaseModel):
     verified: bool
+    similarity: float
     confidence_score: float
     explanation: str
     test_valid: bool

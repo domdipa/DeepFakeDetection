@@ -58,7 +58,7 @@ class Program
                     break;
                 case TestType.DEEP_FAKE_TEST:
                     numberOfTestImages = 1;
-                    writer.WriteLine(string.Join(";", csvHeaderString, "Verified", "Confidence_Score", "Explanation", "Test_Valid"));                                
+                    writer.WriteLine(string.Join(";", csvHeaderString, "Verified", "Similarity", "Confidence_Score", "Explanation", "Test_Valid"));                                
                     break;
                 case TestType.MODEL_VALIDATION:
                     numberOfTestImages = 1;
@@ -134,7 +134,7 @@ class Program
                                     Console.WriteLine($"Run test ID: {testId}");
                                     var originalTestResultEntry = $"{testId};{Path.GetFileName(originalImage)};{Path.GetFileName(originalImageFromOtherVariantFolder)};{name};{gender}";
                                     RunServicesByTestType(testType, testId, 0, writer, originalTestResultEntry, originalImage, originalImageFromOtherVariantFolder, detectorBackend);
-                                    testedOriginalImages.Add(originalImage);
+                                    testedOriginalImages.Add(originalImage);                            
                                     testId++;
                                 }
                             }
@@ -181,7 +181,7 @@ class Program
             var deepfakeCheckResult = GetDeepFakeCheckResult(sourceImagePath, targetImagePath);
             //sometimes the llm adds ";" as character to explanation -> replace with " - " for not destroyying csv 
             var explanation = deepfakeCheckResult.Explanation.Replace(";", " -");
-            writer.WriteLine(string.Join(";", resultEntryString, testVariant, deepfakeCheckResult.Verified, deepfakeCheckResult.ConfidenceScore, explanation, deepfakeCheckResult.TestValid));
+            writer.WriteLine(string.Join(";", resultEntryString, testVariant, deepfakeCheckResult.Verified, deepfakeCheckResult.Similarity, deepfakeCheckResult.ConfidenceScore, explanation, deepfakeCheckResult.TestValid));
         }
         else if (testType == TestType.MODEL_VALIDATION)
         {
@@ -328,9 +328,9 @@ class Program
             secondFileStreamLLM.Dispose();
             return llmResult;
         }
-        catch (Exception)
+        catch (Exception e)
         {
-            return new LLMResultModel(false, 0, "Error", false);
+            return new LLMResultModel(false, 0, 0, "Error", false);
         }
     }
 
